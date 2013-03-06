@@ -1,0 +1,14 @@
+INDEX VERSION 1.125+D:\dev\algo\.metadata\.plugins\org.eclipse.jdt.core
+174670300.index
+71654552.index
+2834612435.index
+1292261746.index
+3983201126.index
+860991414.index
+2612729434.index
+3669445993.index
+67874352.index
+2475680748.index
+1837118552.index
+859007504.index
+1369111238.index

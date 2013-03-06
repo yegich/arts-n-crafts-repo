@@ -1,0 +1,97 @@
+package yega.alogorithms.randomizecontraction;
+
+import static java.lang.String.format;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+
+import org.apache.log4j.Logger;
+
+public class RandomizeContracionAlgorithm {
+
+	private static Logger LOG = Logger.getLogger(RandomizeContracionAlgorithm.class);
+	
+	private List<GraphConnection> connections;
+	private Set<Vertex> loadVertexSet;
+	public RandomizeContracionAlgorithm() {
+		connections = new LinkedList<GraphConnection>();
+		loadVertexSet = new HashSet<Vertex>();
+	}
+	
+	public void connectVertices(Vertex beginVertex, Vertex endVertex, Edge edge) {
+		if (loadVertexSet.contains(beginVertex) && loadVertexSet.contains(endVertex)) {
+			LOG.debug(String.format(
+					"Edge [%s] already connected two vertices [%s : %s], SKIPED!", edge,
+					beginVertex, endVertex));
+		} else {
+			loadVertexSet.add(beginVertex);
+			loadVertexSet.add(endVertex);
+			connections.add(new GraphConnection.Builder(beginVertex, endVertex,edge).build());
+			LOG.debug(String.format(
+					"Edge [%s] connected two vertices [%s : %s]", edge,
+					beginVertex, endVertex));
+		}
+	}
+	
+
+	public GraphConnection selectRandomConnection() {
+		Random randomGenerator = new Random();
+		int index = randomGenerator.nextInt(connections.size());
+		GraphConnection c = connections.get(index);
+		LOG.debug(format("Selected connection is : [%s]", c));
+		return c;
+	}
+
+	public void contractConnetion(GraphConnection connection) {
+		Vertex superVertex = new Vertex.Builder().id(
+				connection.getBegin().getId() + "_"
+						+ connection.getEnd().getId()).build();
+		
+		loadVertexSet.remove(connection.getBegin());
+		loadVertexSet.remove(connection.getEnd());
+		loadVertexSet.add(superVertex);
+		
+		//connections.remove(connection);
+		//LOG.debug(format("Removed directly connection : [%s]",connection));
+		Iterator<GraphConnection> it = connections.iterator();
+		while( it.hasNext()) {
+			GraphConnection c = it.next();
+			LOG.debug(format("C1 [%s]  == C2 [%s]", c, connection));
+			if(c.getBegin().equals(connection.getBegin()) || c.getBegin().equals(connection.getEnd())) {
+				c.setBegin(superVertex);
+			} 
+			
+			if(c.getEnd().equals(connection.getBegin()) || c.getEnd().equals(connection.getEnd())) {
+				c.setEnd(superVertex);
+			}
+			
+			if(c.getBegin().equals(c.getEnd())) {
+				it.remove();
+				LOG.debug(format("Removed loop connection : [%s]",c));
+			}
+		}
+		
+		LOG.debug(String.format("Left Vertices size [%d]  [%s]",loadVertexSet.size(), loadVertexSet));
+	}
+	
+	public Integer findMinCut2() {
+		Integer mincut = null;
+		while(true) {
+			contractConnetion(selectRandomConnection());
+			mincut = connections.size();
+			
+			if(loadVertexSet.size() == 2) {
+				break;
+			}
+		}
+		LOG.info(String.format("The mincut this time is [%d]",mincut));
+		return mincut;
+	}
+
+}

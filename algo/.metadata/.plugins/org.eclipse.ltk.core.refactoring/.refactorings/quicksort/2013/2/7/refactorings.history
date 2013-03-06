@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;yege.alogrithms.quicksort&apos; to &apos;yega.alogrithms.quicksort&apos;&#x0D;&#x0A;- Original project: &apos;quicksort&apos;&#x0D;&#x0A;- Original element: &apos;quicksort/src/yege.alogrithms.quicksort&apos;&#x0D;&#x0A;- Renamed element: &apos;quicksort/src/yega.alogrithms.quicksort&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;yege.alogrithms.quicksort&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;yege.alogrithms.quicksort" name="yega.alogrithms.quicksort" qualified="false" references="true" stamp="1360966749875" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,19 @@
+package yega.alogorithms.randomizecontraction;
+
+public class Vertex {
+
+	Double id;
+	
+	public static class Builder{
+		private Vertex vertex;
+		
+		public Vertex build() {
+			return vertex;
+		}
+		
+		public Builder id(Double id) {
+			vertex.id = id;
+			return this;
+		}
+	}
+}

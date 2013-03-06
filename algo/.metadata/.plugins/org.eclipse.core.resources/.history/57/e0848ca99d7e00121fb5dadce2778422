@@ -1,0 +1,18 @@
+package yega.alogorithms.randomizecontraction;
+
+import org.apache.log4j.Logger;
+import org.junit.Test;
+
+
+public class MinCutAlgorithmTest {
+	private static Logger LOG = Logger.getLogger(MinCutAlgorithmTest.class);
+	
+	@Test
+	public void verifyThantMinCuntWorks() {
+		MinCutAlgorithm algo = new MinCutAlgorithm();
+		
+		algo.find(RandomizeContractionAlgorithmTestData.EDGES);
+		
+		LOG.info(String.format("Min Cut on this run is [%d]", algo.getMinCut()));
+	}
+}

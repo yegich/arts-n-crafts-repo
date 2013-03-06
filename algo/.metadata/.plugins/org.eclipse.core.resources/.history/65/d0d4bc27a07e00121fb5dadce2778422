@@ -1,0 +1,55 @@
+package yega.alogorithms.randomizecontraction;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.junit.Test;
+
+import yega.alogrithms.quicksort.QuickSortTest;
+
+
+public class MinCutAlgorithmTest {
+	private static Logger LOG = Logger.getLogger(MinCutAlgorithmTest.class);
+	
+	@Test
+	public void verifyThantMinCuntWorks() {
+		MinCutAlgorithm algo = new MinCutAlgorithm();
+		
+		algo.find(RandomizeContractionAlgorithmTestData.EDGES);
+		
+		LOG.info(String.format("Min Cut on this run is [%d]", algo.getMinCut()));
+	}
+	
+	@Test
+	public void verifyThatLowestMinCutWillBeChoosen() {
+		MinCutAlgorithm algo = new MinCutAlgorithm();
+		
+		Integer minCut = algo.findMinCut(RandomizeContractionAlgorithmTestData.EDGES, 1000);
+		
+		LOG.info(String.format("Min Cut on this run is [%d]", minCut));
+	}
+	
+	@Test
+	public void verifyThatHomeworkIsCorrect() {
+		
+		BufferedReader reader = new BufferedReader(new InputStreamReader(QuickSortTest.class.getResourceAsStream("/QuickSort.txt")));
+		
+		List<Edge> edges = new ArrayList<Edge>();
+		
+		while(true) {
+			String line = reader.readLine();
+			if(line == null) {
+				break;
+			}
+			array.add(Integer.valueOf(line.trim()));
+		}
+		MinCutAlgorithm algo = new MinCutAlgorithm();
+		
+		Integer minCut = algo.findMinCut(RandomizeContractionAlgorithmTestData.EDGES, 1000);
+		
+		LOG.info(String.format("Min Cut on this run is [%d]", minCut));
+	}
+}

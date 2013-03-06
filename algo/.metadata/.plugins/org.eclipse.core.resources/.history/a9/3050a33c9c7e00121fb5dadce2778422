@@ -1,0 +1,22 @@
+package yega.alogorithms.randomizecontraction;
+
+import java.util.List;
+
+public class MinCutAlgorithm {
+
+	public Integer find(List<Edge> edges) {
+		RandomizeContracionAlgorithm rcAlgo = new RandomizeContracionAlgorithm();
+		
+		for(Edge edge : edges) {
+			rcAlgo.loadEdge(edge);
+		}
+		
+		List<Edge> contractedEdges = rcAlgo.contractEdge(rcAlgo.selectRandomEdge());
+		
+		if(rcAlgo.getGraph().keySet().size() > 2) {
+			find(contractedEdges);
+		}
+		
+		return rcAlgo.getEdges().size();
+	}
+}

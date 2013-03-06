@@ -1,0 +1,17 @@
+package yega.alogorithms.randomizecontraction;
+
+
+public class RandomizeContractionAlgorithmTestData {
+	
+	static Vertex V1 = new Vertex.Builder().id("V1").build();
+	static Vertex V2 = new Vertex.Builder().id("V2").build();
+	static Vertex V3 = new Vertex.Builder().id("V3").build();
+	static Vertex V4 = new Vertex.Builder().id("V4").build();
+	
+	static Edge E1 = new Edge.Builder().id("E1").build();
+	static Edge E2 = new Edge.Builder().id("E2").build();
+	static Edge E3 = new Edge.Builder().id("E3").build();
+	static Edge E4 = new Edge.Builder().id("E4").build();
+	static Edge E5 = new Edge.Builder().id("E5").build();
+	
+}

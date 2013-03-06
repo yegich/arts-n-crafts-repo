@@ -1,0 +1,39 @@
+package yega.alogorithms.randomizecontraction;
+
+public class GraphConnection {
+
+	private Vertex begin;
+	private Vertex end;
+	private Edge edge;
+	
+	public Vertex getBegin() {
+		return begin;
+	}
+	public void setBegin(Vertex begin) {
+		this.begin = begin;
+	}
+	public Vertex getEnd() {
+		return end;
+	}
+	public void setEnd(Vertex end) {
+		this.end = end;
+	}
+	public Edge getEdge() {
+		return edge;
+	}
+	public void setEdge(Edge edge) {
+		this.edge = edge;
+	}
+	
+	
+	public static class Builder {
+		private GraphConnection connection;
+		
+		public Builder(Vertex v1, Vertex v2, Edge e) {
+			connection = new GraphConnection();
+			connection.begin = v1;
+			connection.end = v2;
+			connection.edge = e;
+		}
+	}
+}

@@ -1,0 +1,11 @@
+package yega.alogorithms.randomizecontraction;
+
+import java.util.List;
+
+public class MinCutAlgorithm {
+
+	public Integer find(List<Edge> edges) {
+		
+		return null;
+	}
+}

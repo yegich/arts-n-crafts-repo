@@ -1,0 +1,71 @@
+package yega.alogorithms.randomizecontraction;
+
+import static java.lang.String.format;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.apache.log4j.Logger;
+import org.junit.Test;
+
+import yega.alogrithms.quicksort.QuickSortTest;
+
+
+public class MinCutAlgorithmTest {
+	private static Logger LOG = Logger.getLogger(MinCutAlgorithmTest.class);
+	
+	@Test
+	public void verifyThantMinCuntWorks() {
+		MinCutAlgorithm algo = new MinCutAlgorithm();
+		
+		algo.find(RandomizeContractionAlgorithmTestData.EDGES);
+		
+		LOG.info(String.format("Min Cut on this run is [%d]", algo.getMinCut()));
+	}
+	
+	@Test
+	public void verifyThatLowestMinCutWillBeChoosen() {
+		MinCutAlgorithm algo = new MinCutAlgorithm();
+		
+		Integer minCut = algo.findMinCut(RandomizeContractionAlgorithmTestData.EDGES, 1000);
+		
+		LOG.info(String.format("Min Cut on this run is [%d]", minCut));
+	}
+	
+	@Test
+	public void verifyThatHomeworkIsCorrect() throws IOException {
+
+		BufferedReader reader = new BufferedReader(new InputStreamReader(
+				MinCutAlgorithmTest.class.getResourceAsStream("/kargerMinCut.txt")));
+
+		Set<Edge> edges = new HashSet<Edge>();
+
+		while (true) {
+			String line = reader.readLine();
+			if (line == null) {
+				break;
+			}
+			String[] vertices = line.split("\t");
+			LOG.debug(format("Line element count [%d]",vertices.length ));
+			String firstVertex = vertices[0];
+			for (String vertex : vertices) {
+				if (vertex == firstVertex) {
+					continue;
+				}
+				edges.add(new Edge.Builder().vertecis(
+						new Vertex.Builder().id(firstVertex).build(),
+						new Vertex.Builder().id(vertex).build()).build());
+			}
+		}
+//		LOG.debug(format("File Loaded: Edges size [%d]", edges.size()));
+//		MinCutAlgorithm algo = new MinCutAlgorithm();
+//		
+//		Integer minCut = algo.findMinCut(edges, 1);
+//		LOG.info(String.format("Min Cut on this run is [%d]", minCut));
+	}
+}

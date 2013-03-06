@@ -1,0 +1,6 @@
+package yega.alogorithms.randomizecontraction;
+
+public interface RandomizeContractionAlgorithmTestData {
+
+	Vertex one = new Vertex.Builder().id(1).build();
+}

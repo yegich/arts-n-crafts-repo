@@ -1,0 +1,52 @@
+package yega.alogorithms.randomizecontraction;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+import static yega.alogorithms.randomizecontraction.RandomizeContractionAlgorithmTestData.*;
+
+import org.hamcrest.CoreMatchers;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+public class RandomizeContracionAlgorithmTest {
+
+	RandomizeContracionAlgorithm algo;
+	
+	@Before
+	public void setUp() {
+		algo = new RandomizeContracionAlgorithm();
+	}
+	
+	@Test
+	public void verifyThatEdgeConnectedWihtVertices() {
+		algo.connectVertices(V1,V3,E1);
+	}
+	
+	@Test
+	public void verifyRandomChooseOfEdge() {
+		initAlgo();
+		
+		Edge edge = algo.selectRandomEdge();
+		
+		Assert.assertThat(edge, anyOf(is(E1),is(E2),is(E3),is(E4),is(E5)));
+	}
+	
+	@Test
+	public void verifyThatEdgeProperlyContracted() {
+		initAlgo();
+		
+		assertThat(algo.contractEdge(E2), CoreMatchers.is(STEP1));
+		assertThat(algo.contractEdge(E1), CoreMatchers.is(STEP2));
+	}
+	
+	private void initAlgo() {
+		algo.connectVertices(V1, V3, E1);
+		algo.connectVertices(V1, V2, E2);
+		algo.connectVertices(V2, V3, E3);
+		algo.connectVertices(V3, V4, E4);
+		algo.connectVertices(V2, V4, E5);
+	}
+	
+}
