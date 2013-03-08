@@ -73,5 +73,9 @@ public class AdjacencyList {
 	public Set<Vertex> vertices() {
 		return adjacency.keySet();
 	}
+
+	public Set<Vertex> getLables() {
+		return adjacency.keySet();
+	}
 	
 }
