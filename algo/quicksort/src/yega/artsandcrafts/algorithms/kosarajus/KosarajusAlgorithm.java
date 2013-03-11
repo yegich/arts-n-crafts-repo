@@ -3,6 +3,9 @@ package yega.artsandcrafts.algorithms.kosarajus;
 import static java.lang.String.format;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -129,5 +132,22 @@ public class KosarajusAlgorithm {
 
 	public Map<Vertex, BigInteger> getLeaderCounters() {
 		return leaderCounters;
+	}
+
+	public List<BigInteger> getResult() {
+		Map<Vertex, BigInteger> strongConnectionCouters = getLeaderCounters();
+		List<BigInteger> sortedValues = new LinkedList<BigInteger>(strongConnectionCouters.values());
+		Collections.sort(sortedValues);
+		Collections.reverse(sortedValues);
+		List<BigInteger> result = new ArrayList<BigInteger>(5);
+		for(int i = 0; i<5; i++) {
+			if(i < sortedValues.size()){
+				result.add(sortedValues.get(i));
+			} else {
+				result.add(BigInteger.ZERO);
+			}
+			
+		}
+		return result;
 	}
 }

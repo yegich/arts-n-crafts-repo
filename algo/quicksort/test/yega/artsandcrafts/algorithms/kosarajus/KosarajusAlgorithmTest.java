@@ -41,6 +41,12 @@ public class KosarajusAlgorithmTest {
 	}
 	
 	@Test
+	public void verifyThatResultIsInIncresingSortOrder() {
+		algo.countSccUsingGraph(TEST_FINISHING_TIME);
+		assertThat(algo.getResult(), is(SccAdjacencyListBuilderTestData.TEST_RESULT));
+	}
+	
+	@Test
 	public void verifyThatTestGraphIsOk() throws IOException {
 		SccAdjacencyListLoader loader = new SccAdjacencyListLoader();
 		loader.load(KosarajusAlgorithmTest.class.getResourceAsStream("/scc_test.txt"));
@@ -49,6 +55,6 @@ public class KosarajusAlgorithmTest {
 		
 		a.run();
 		//3,3,2,0,0
-		System.out.println(a.getLeaderCounters());
+		System.out.println(a.getResult());
 	}
 }

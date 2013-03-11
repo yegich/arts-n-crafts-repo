@@ -13,6 +13,7 @@ import yega.alogorithms.randomizecontraction.Vertex;
 public class SccAdjacencyListBuilderTestData {
 
 	public static final Map<Vertex, BigInteger> TEST_LEADER_COTUNTERS = new HashMap<Vertex, BigInteger>();
+	public static final List<BigInteger> TEST_RESULT = new LinkedList<BigInteger>();
 	public static AdjacencyList TEST_ADJACENCY_LIST = new AdjacencyList();
 	public static AdjacencyList TEST_REVERS_ADJACENCY_LIST = new AdjacencyList();
 	
@@ -42,5 +43,13 @@ public class SccAdjacencyListBuilderTestData {
 		
 		TEST_LEADER_COTUNTERS.put(V3, new BigInteger("3"));
 		TEST_LEADER_COTUNTERS.put(V4, new BigInteger("1"));
+		
+		TEST_RESULT.add(new BigInteger("3"));
+		TEST_RESULT.add(new BigInteger("1"));
+		TEST_RESULT.add(new BigInteger("0"));
+		TEST_RESULT.add(new BigInteger("0"));
+		TEST_RESULT.add(new BigInteger("0"));
+		
+		
 	}
 }
